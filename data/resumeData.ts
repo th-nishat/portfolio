@@ -34,7 +34,7 @@ export const resumeData: ResumeData = {
       skills: [
         { name: "Linux (RHEL/CentOS)", proficiency: 95 },
         { name: "Windows Server", proficiency: 80 },
-        { name: "VMware ESXi", proficiency: 85 },
+        { name: "VMware (ESXi, Proxmox)", proficiency: 85 },
         { name: "Networking (TCP/IP)", proficiency: 88 }
       ]
     },
@@ -51,7 +51,7 @@ export const resumeData: ResumeData = {
   experience: [
     {
       role: "DevOps Engineer",
-      company: "IBCS-PRIMAX Software (Bangladesh) Limited.",
+      company: "IBCS PRIMAX Software (Bangladesh) Limited.",
       location: "Dhaka, Bangladesh",
       period: "July 2025 – Present",
       logo: "/assets/logos/ibcs-primax.png",
@@ -95,7 +95,7 @@ export const resumeData: ResumeData = {
       company: "Decent Act International.",
       location: "Titas Gas, Dhaka, Bangladesh",
       period: "December 2021 – June 2022",
-      logo: "/assets/logos/Decent.png",
+      logo: "/assets/logos/decent.png",
       description: [
         "Handled customer queries and technical support, ensuring service satisfaction.",
         "Documented and resolved issues, improving support efficiency."
@@ -135,8 +135,8 @@ export const resumeData: ResumeData = {
     }
   ],
   education: [
-    { degree: "M.Sc in Computer Science & Engineering (CSE)", institution: "Dhaka International University", year: "In Progress" },
-    { degree: "B.Sc in Computer Science & Engineering (CSE)", institution: "Dhaka International University", year: "2024", result: "3.17 out of 4.00" },
+    { degree: "M.Sc in Computer Science & Engineering", institution: "Dhaka International University", year: "In Progress" },
+    { degree: "B.Sc in Computer Science & Engineering", institution: "Dhaka International University", year: "2024", result: "3.17 out of 4.00" },
     { degree: "Diploma in Computer Technology", institution: "Nilphamari Technical School and College", year: "2020", result: "3.77 out of 4.00" },
     { degree: "SSC (Science)", institution: "Sundarganj Abdul Mozid Govt Boys High School", year: "2015", result: "4.44 out of 5.00" }
   ],
@@ -166,7 +166,7 @@ export const resumeData: ResumeData = {
       image: "/assets/gallery/devops.jpg"
     },
     {
-      title: "Cyber Security Specialist",
+      title: "Cyber Security Masterclass",
       category: "Technical Training",
       image: "/assets/gallery/security.jpg"
     }
@@ -177,20 +177,5 @@ export const resumeData: ResumeData = {
     phone: "+880 1717 335002",
     address: "Mohammadpur, Dhaka, Bangladesh"
   },
-  references: [
-    {
-      name: "Imam Mahdi",
-      role: "Senior Manager, ERP",
-      company: "Brac Bank PLC",
-      phone: "+8801674839983",
-      email: "imam.mahdi.cse@gmail.com"
-    },
-    {
-      name: "Md. Arafat Hossen",
-      role: "Senior Engineer",
-      company: "bKash Limited",
-      phone: "+8801685245749",
-      email: "arafat.hossen@bkash.com"
-    }
-  ]
+  
 };

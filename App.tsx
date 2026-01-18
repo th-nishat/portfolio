@@ -75,7 +75,7 @@ const App: React.FC = () => {
 
   const navItems = [
     { id: 'home', label: 'Home', icon: <Home size={14} /> },
-    { id: 'about', label: 'Who Am I', icon: <UserCheck size={14} /> },
+    { id: 'about', label: 'About Me', icon: <UserCheck size={14} /> },
     { id: 'skills', label: 'Skills', icon: <Layers size={14} /> },
     { id: 'experience', label: 'Experience', icon: <Briefcase size={14} /> },
     { id: 'projects', label: 'Projects', icon: <Box size={14} /> },
@@ -104,7 +104,7 @@ const App: React.FC = () => {
     if (type === 'whatsapp') {
       window.open(`https://wa.me/${resumeData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodedMsg}`, '_blank');
     } else {
-      window.open(`mailto:${resumeData.contact.email}?subject=Message from ${encodeURIComponent(contactName)}&body=${encodeURIComponent(contactMsg)}`, '_blank');
+      window.open(`mailto:${resumeData.contact.email}?subject=${encodeURIComponent(contactName)}&body=${encodeURIComponent(contactMsg)}`, '_blank');
     }
   };
 
@@ -272,7 +272,7 @@ const App: React.FC = () => {
       {/* Linux Terminal Who Am I Section */}
       <section id="about" className={`py-32 relative transition-all ${theme === 'light' ? 'bg-white shadow-[inset_0_2px_40px_rgba(0,0,0,0.01)]' : 'bg-slate-900/10'}`}>
         <div className="container mx-auto px-6">
-          <SectionHeading title="Who Am I" subtitle="System User Identification" icon={<TerminalIcon size={20} />} />
+          <SectionHeading title="About Me" subtitle="System User Identification" icon={<TerminalIcon size={20} />} />
           
           <div className="max-w-4xl mx-auto">
             <div className={`w-full rounded-[1.5rem] overflow-hidden shadow-2xl font-mono text-sm border transition-all ${theme === 'light' ? 'border-slate-200 shadow-slate-200/50' : 'bg-[#0b1121] border-slate-800 shadow-black'}`}>
@@ -301,6 +301,10 @@ const App: React.FC = () => {
                   <div className={`flex items-start gap-3 ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
                     <span className="text-slate-500">&gt;</span>
                     <span>Role: DevOps Engineer</span>
+                  </div>
+				  <div className={`flex items-start gap-3 ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
+                    <span className="text-slate-500">&gt;</span>
+                    <span>Age: 27 Years </span>
                   </div>
                   <div className={`flex items-start gap-3 ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
                     <span className="text-slate-500">&gt;</span>
@@ -457,94 +461,216 @@ const App: React.FC = () => {
       </section>
 
       {/* Education & Certifications Section */}
-      <section id="education" className={`py-32 transition-all ${theme === 'light' ? 'bg-slate-50/20 border-y border-slate-100' : ''}`}>
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <SectionHeading title="Education" subtitle="Academic Trace" icon={<BookOpen size={20} />} />
-              <div className="space-y-6">
-                {resumeData.education.map((edu, idx) => (
-                  <div key={idx} className={`p-8 rounded-3xl border transition-all duration-300 transform hover:scale-[1.02] relative group overflow-hidden ${theme === 'light' ? 'bg-white border-slate-100 shadow-sm hover:shadow-lg' : 'bg-slate-900/50 border-slate-800 hover:border-blue-500/30'}`}>
-                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <GraduationCap size={80} />
-                    </div>
-                    <p className="text-blue-500 font-mono text-xs font-black mb-2">{edu.year}</p>
-                    <h4 className={`text-xl font-black mb-2 leading-tight ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{edu.degree}</h4>
-                    {edu.result && <p className="text-blue-500 font-mono text-[10px] font-bold mb-2 uppercase tracking-tight">RESULT: {edu.result}</p>}
-                    <p className={`text-xs font-bold uppercase tracking-wide flex items-center gap-2 ${theme === 'light' ? 'text-slate-400' : 'text-slate-500'}`}>
-                      <MapPin size={12} /> {edu.institution}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div id="certifications">
-              <SectionHeading title="Certifications" subtitle="Credentials" icon={<Award size={20} />} />
-              <div className="space-y-6">
-                {resumeData.certifications.map((cert, idx) => (
-                  <div key={idx} className={`p-6 rounded-[2rem] border flex items-center gap-6 transition-all duration-300 transform hover:scale-[1.02] group ${theme === 'light' ? 'bg-white border-slate-100 shadow-sm hover:shadow-lg' : 'bg-slate-950/50 border-slate-800 hover:border-blue-500/30'}`}>
-                    <div className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 flex items-center justify-center p-2 overflow-hidden transition-all bg-white group-hover:scale-110 ${theme === 'light' ? 'border-slate-100 shadow-md' : 'border-slate-800 shadow-2xl shadow-blue-600/5'}`}>
-                      {cert.logo ? (
-                        <img 
-                          src={cert.logo} 
-                          alt={cert.title} 
-                          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                            e.currentTarget.parentElement?.classList.add('bg-blue-600/10');
-                            const fallback = document.createElement('div');
-                            fallback.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>';
-                            e.currentTarget.parentElement?.appendChild(fallback.firstChild as Node);
-                          }}
-                        />
-                      ) : (
-                        <ShieldCheck className="text-blue-600" size={32} />
-                      )}
-                    </div>
-                    <p className={`text-sm font-mono font-bold leading-relaxed ${theme === 'light' ? 'text-slate-700' : 'text-slate-300'}`}>
-                      {cert.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+<section
+  id="education"
+  className={`py-32 transition-all ${
+    theme === "light" ? "bg-slate-50/20 border-y border-slate-100" : ""
+  }`}
+>
+  <div className="container mx-auto px-6">
 
-      {/* Gallery Section */}
-      <section id="gallery" className={`py-32 transition-all ${theme === 'light' ? 'bg-slate-50/30 border-y border-slate-100' : 'bg-slate-900/10'}`}>
-        <div className="container mx-auto px-6">
-          <SectionHeading title="Gallery" subtitle="System Credentials & Archives" icon={<ImageIcon size={20} />} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resumeData.gallery.map((item, idx) => (
-              <div 
-                key={idx} 
-                className={`group relative rounded-[2rem] overflow-hidden cursor-pointer border-2 transition-all duration-500 transform hover:scale-[1.02] ${theme === 'light' ? 'border-white bg-white shadow-lg' : 'border-slate-800 bg-slate-900 shadow-2xl'}`}
-                onClick={() => setSelectedImage(item.image)}
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    onError={(e) => {
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1589330694653-976414929497?q=80&w=1000&auto=format&fit=crop";
-                    }}
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                  <span className="text-blue-400 font-mono text-[9px] font-black uppercase tracking-widest mb-1">{item.category}</span>
-                  <h4 className="text-white font-black text-lg leading-tight uppercase tracking-tighter">{item.title}</h4>
-                  <div className="mt-4 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white self-end transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    <Maximize2 size={16} />
-                  </div>
-                </div>
-              </div>
-            ))}
+    {/* ================= EDUCATION ================= */}
+	<div>
+	<SectionHeading
+		title="Education"
+		subtitle="Academic Trace"
+		icon={<BookOpen size={20} />}
+	/>
+
+	{/* 2/2 GRID */}
+	<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+		{resumeData.education.map((edu, idx) => (
+		<div
+			key={idx}
+			className={`p-8 rounded-3xl border transition-all duration-300 transform hover:scale-[1.02] relative group overflow-hidden ${
+			theme === "light"
+				? "bg-white border-slate-100 shadow-sm hover:shadow-lg"
+				: "bg-slate-900/50 border-slate-800 hover:border-blue-500/30"
+			}`}
+		>
+			{/* BACKGROUND ICON */}
+			<div className="absolute top-10 right-6 p-4 opacity-[0.035] group-hover:opacity-[0.06] transition-opacity pointer-events-none">
+			<GraduationCap size={80} />
+			</div>
+	
+			{/* DEGREE BLOCK */}
+			<div className="relative mb-4 pt-4">
+			{/* PASSING YEAR (FLOATING ABOVE DEGREE) */}
+			<span
+				className={`absolute -top-2 right-0 z-10 font-mono text-[10px] font-black px-3 py-1 rounded-full tracking-[0.18em] ${
+				theme === "light"
+					? "bg-blue-50 text-blue-600 border border-blue-100"
+					: "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+				}`}
+			>
+				{edu.year}
+			</span>
+
+			{/* DEGREE */}
+			<h4
+				className={`text-xl font-black leading-tight pr-20 ${
+				theme === "light" ? "text-slate-900" : "text-white"
+				}`}
+			>
+				{edu.degree}
+			</h4>
+			</div>
+
+			{/* RESULT */}
+			{edu.result && (
+			<p className="text-blue-500 font-mono text-[10px] font-bold mb-2 uppercase tracking-tight">
+				RESULT: {edu.result}
+			</p>
+			)}
+
+			{/* INSTITUTION */}
+			<p
+			className={`text-xs font-bold uppercase tracking-wide flex items-center gap-2 ${
+				theme === "light" ? "text-slate-400" : "text-slate-500"
+			}`}
+			>
+			<MapPin size={12} /> {edu.institution}
+			</p>
+		</div>
+		))}
+	</div>
+	</div>
+
+
+    {/* ================= CERTIFICATIONS ================= */}
+    <div id="certifications" className="mt-32">
+      <SectionHeading
+        title="Certifications"
+        subtitle="Credentials"
+        icon={<Award size={20} />}
+      />
+
+      {/* PAGE-ALIGNED GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {resumeData.certifications.map((cert, idx) => (
+          <div
+            key={idx}
+            className={`p-6 rounded-[2rem] border transition-all duration-300 transform hover:scale-[1.02] group flex flex-col items-center text-center ${
+              theme === "light"
+                ? "bg-white border-slate-100 shadow-sm hover:shadow-lg"
+                : "bg-slate-950/50 border-slate-800 hover:border-blue-500/30"
+            }`}
+          >
+            {/* LOGO CENTER */}
+            <div
+              className={`w-20 h-20 rounded-2xl border-2 flex items-center justify-center p-2 overflow-hidden transition-all bg-white group-hover:scale-110 ${
+                theme === "light"
+                  ? "border-slate-100 shadow-md"
+                  : "border-slate-800 shadow-2xl shadow-blue-600/5"
+              }`}
+            >
+              {cert.logo ? (
+                <img
+                  src={cert.logo}
+                  alt={cert.title}
+                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = "none";
+                    target.parentElement?.classList.add("bg-blue-600/10");
+                  }}
+                />
+              ) : (
+                <ShieldCheck className="text-blue-600" size={32} />
+              )}
+            </div>
+
+            {/* TEXT BELOW */}
+            <p
+              className={`mt-4 text-sm font-mono font-bold leading-relaxed ${
+                theme === "light" ? "text-slate-700" : "text-slate-300"
+              }`}
+            >
+              {cert.title}
+            </p>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+		{/* Gallery Section */}
+<section
+  id="gallery"
+  className={`py-32 transition-all ${
+    theme === "light"
+      ? "bg-slate-50/30 border-y border-slate-100"
+      : "bg-slate-900/10"
+  }`}
+>
+  <style>
+    {`
+      @keyframes galleryScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    `}
+  </style>
+
+  <div className="container mx-auto px-6">
+    <SectionHeading
+      title="Gallery"
+      subtitle="System Credentials & Archives"
+      icon={<ImageIcon size={20} />}
+    />
+
+    <div className="overflow-hidden">
+      <div
+        className="flex gap-6"
+        style={{
+          animation: "galleryScroll 30s linear infinite",
+        }}
+      >
+        {[...resumeData.gallery, ...resumeData.gallery].map(
+          (item, idx) => (
+            <div
+              key={idx}
+              className={`group relative min-w-[300px] rounded-[2rem] overflow-hidden cursor-pointer border-2 transition-all duration-500 transform hover:scale-[1.02] ${
+                theme === "light"
+                  ? "border-white bg-white shadow-lg"
+                  : "border-slate-800 bg-slate-900 shadow-2xl"
+              }`}
+              onClick={() => setSelectedImage(item.image)}
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      "https://images.unsplash.com/photo-1589330694653-976414929497?q=80&w=1000&auto=format&fit=crop";
+                  }}
+                />
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                <span className="text-blue-400 font-mono text-[9px] font-black uppercase tracking-widest mb-1">
+                  {item.category}
+                </span>
+                <h4 className="text-white font-black text-lg leading-tight uppercase tracking-tighter">
+                  {item.title}
+                </h4>
+                <div className="mt-4 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white self-end transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                  <Maximize2 size={16} />
+                </div>
+				</div>
+				</div>
+				)
+			)}
+		</div>
+		</div>
+		</div>
+	</section>
+
 
       {/* Message Box / Contact Terminal Section */}
       <section id="contact-terminal" className="py-32">
@@ -667,7 +793,7 @@ const App: React.FC = () => {
               <span className="font-mono text-[9px] text-slate-400 font-bold uppercase tracking-widest">Architected_By_Nishat</span>
             </div>
             <p className="text-[9px] font-mono text-slate-400 font-bold uppercase tracking-widest">
-              &copy; {new Date().getFullYear()} Md. Touhidi Nishat • All Systems Operational
+              &copy; {new Date().getFullYear()} Nishat08 • All Systems Operational
             </p>
           </div>
         </div>
